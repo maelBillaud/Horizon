@@ -1,0 +1,36 @@
+name: Newsletter de nuit
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # 02:00 UTC, soit 03:00 ou 04:00 en France selon la saison
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-newsletter
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Installer Horizon
+        run: uv sync
+      - name: Générer la newsletter (dernières 24 h)
+        env:
+          HORIZON_AI_KEY: ${{ secrets.HORIZON_AI_KEY }}
+          HORIZON_AI_MODEL: ${{ vars.HORIZON_AI_MODEL }}
+          HORIZON_AI_BASE_URL: ${{ vars.HORIZON_AI_BASE_URL }}
+        run: uv run horizon --config data/config.newsletter.json --hours 24
+      - name: Publier docs/ et data/summaries
+        run: |
+          git config user.name "newsletter-bot"
+          git config user.email "newsletter-bot@users.noreply.github.com"
+          git add docs data/summaries
+          git diff --cached --quiet || git commit -m "Newsletter $(date -u +%F)"
+          git push

@@ -1,0 +1,2 @@
+Appartient à ce profil : smartphones et ordinateurs, cybersécurité, logiciel libre, domotique (Home Assistant, Zigbee, Matter), auto-hébergement et homelab, jeux vidéo, espace, batteries et véhicules électriques, vie privée et réglementation du numérique, télécoms et réseaux, start-up et French Tech.
+N’appartient pas à ce profil : l’IA (traitée par le profil IA), tests de produits purement promotionnels.

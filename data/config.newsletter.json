@@ -1,0 +1,47 @@
+{
+  "ai": {
+    "provider": "openai",
+    "model": "${HORIZON_AI_MODEL}",
+    "api_key_env": "HORIZON_AI_KEY",
+    "base_url": "${HORIZON_AI_BASE_URL}",
+    "languages": ["fr"],
+    "throttle_sec": 4.5,
+    "analysis_concurrency": 1,
+    "enrichment_concurrency": 1
+  },
+  "sources": {
+    "rss": [
+      {"name": "franceinfo - Politique", "url": "https://www.franceinfo.fr/politique.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "franceinfo - France", "url": "https://www.franceinfo.fr/france.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "franceinfo - Monde", "url": "https://www.franceinfo.fr/monde.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "franceinfo - Justice", "url": "https://www.francetvinfo.fr/societe/justice.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "franceinfo - Tech / Web", "url": "https://www.franceinfo.fr/internet.rss", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Le Monde Informatique - Sécurité", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml", "enabled": true, "category": "tech", "profile": "tech"}
+    ]
+  },
+  "collection": {"time_window_hours": 24},
+  "processing": {
+    "profiles_dir": "profiles-fr",
+    "default_profile": "politique-fr",
+    "profile_settings": {
+      "politique-fr": {"threshold": 6.0, "topic_dedup": false},
+      "sport": {"threshold": 6.0, "topic_dedup": true},
+      "ia": {"threshold": 7.0, "topic_dedup": true},
+      "tech": {"threshold": 6.0, "topic_dedup": true}
+    }
+  },
+  "digest": {
+    "max_items": 21,
+    "profile_order": ["politique-fr", "sport", "ia", "tech"],
+    "category_groups": {
+      "politique-gauche": {"name": "Politique - gauche", "limit": 2, "categories": ["politique-gauche"]},
+      "politique-centre": {"name": "Politique - centre et service public", "limit": 2, "categories": ["politique-centre"]},
+      "politique-droite": {"name": "Politique - droite", "limit": 2, "categories": ["politique-droite"]},
+      "sport": {"name": "Sport", "limit": 5, "categories": ["sport"]},
+      "ia": {"name": "IA", "limit": 5, "categories": ["ia"]},
+      "tech": {"name": "Technologies", "limit": 5, "categories": ["tech"]}
+    },
+    "default_group": "other",
+    "default_group_limit": 1
+  }
+}
