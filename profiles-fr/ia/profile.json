@@ -1,0 +1,14 @@
+{
+  "id": "ia",
+  "name": "Intelligence artificielle",
+  "display_names": {"fr": "Intelligence artificielle"},
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "content": {"analysis_max_chars": 1500, "enrichment_max_chars": 6000, "sampling": "prefix"},
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {"id": "summary", "type": "section", "tools": [], "primary": true}
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+Appartient à ce profil : nouveaux modèles d’IA et comparatifs, outils et agents pour développeurs, IA open source et modèles exécutables en local (ordinateur personnel, homelab), régulation (AI Act, droit d’auteur), recherche scientifique, IA française (Mistral et autres), puces et infrastructures pour l’IA, robotique.
+N’appartient pas à ce profil : simple mention de l’IA dans un article sur autre chose, publicité.

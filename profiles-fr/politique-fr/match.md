@@ -1,0 +1,2 @@
+Appartient à ce profil : l’actualité politique française — gouvernement, Assemblée nationale et Sénat, partis, élections et sondages, présidentielle de 2027, budget et fiscalité, retraites et protection sociale, immigration et sécurité, écologie et énergie sous l’angle politique, justice et institutions, Europe et international vus de France, actualité politique régionale ou locale.
+N’appartient pas à ce profil : faits divers sans enjeu public, people, sport, culture, pratique.

@@ -1,0 +1,22 @@
+[
+  {"name": "Mediapart", "page": "https://www.mediapart.fr/", "category": "politique-gauche", "profile": "politique-fr"},
+  {"name": "L'Humanité", "page": "https://www.humanite.fr/politique", "category": "politique-gauche", "profile": "politique-fr"},
+  {"name": "Le Monde - Politique", "page": "https://www.lemonde.fr/politique/", "category": "politique-centre", "profile": "politique-fr"},
+  {"name": "Ouest-France - Politique", "page": "https://www.ouest-france.fr/politique/", "category": "politique-centre", "profile": "politique-fr"},
+  {"name": "Le Point - Politique", "page": "https://www.lepoint.fr/politique/", "category": "politique-droite", "profile": "politique-fr"},
+  {"name": "L'Opinion", "page": "https://www.lopinion.fr/politique", "category": "politique-droite", "profile": "politique-fr"},
+  {"name": "Valeurs actuelles", "page": "https://www.valeursactuelles.com/politique", "category": "politique-droite", "profile": "politique-fr"},
+  {"name": "Eurosport", "page": "https://www.eurosport.fr/", "category": "sport", "profile": "sport"},
+  {"name": "franceinfo sport", "page": "https://www.franceinfo.fr/sports/", "category": "sport", "profile": "sport"},
+  {"name": "Ouest-France sport", "page": "https://www.ouest-france.fr/sport/", "category": "sport", "profile": "sport"},
+  {"name": "Numerama", "page": "https://www.numerama.com/", "category": "tech", "profile": "tech"},
+  {"name": "Clubic", "page": "https://www.clubic.com/", "category": "tech", "profile": "tech"},
+  {"name": "Les Numériques", "page": "https://www.lesnumeriques.com/", "category": "tech", "profile": "tech"},
+  {"name": "Le Monde Informatique", "page": "https://www.lemondeinformatique.fr/", "category": "ia", "profile": "ia"},
+  {"name": "MIT Technology Review", "page": "https://www.technologyreview.com/", "category": "ia", "profile": "ia"},
+  {"name": "Hugging Face blog", "page": "https://huggingface.co/blog", "category": "ia", "profile": "ia"},
+  {"name": "Mistral AI", "page": "https://mistral.ai/news", "category": "ia", "profile": "ia"},
+  {"name": "Anthropic", "page": "https://www.anthropic.com/news", "category": "ia", "profile": "ia"},
+  {"name": "OpenAI", "page": "https://openai.com/news/", "category": "ia", "profile": "ia"},
+  {"name": "Google DeepMind", "page": "https://deepmind.google/discover/blog/", "category": "ia", "profile": "ia"}
+]

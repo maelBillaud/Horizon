@@ -469,3 +469,29 @@ def test_generate_summary_preserves_normal_http_links():
     assert "[Important Item 1](https://example.com/items/1)" in result
     assert "[Discussion](https://example.com/discuss?id=1#comments)" in result
     assert 'href="https://docs.example.com/path?q=one&amp;lang=en"' in result
+
+
+def test_generate_summary_french_labels_and_apostrophes():
+    item = _make_item(1)
+    item.processing.artifacts["fr"] = ContentArtifact(
+        language="fr",
+        title="L'Assemblée adopte le budget",
+        blocks=[
+            ContentBlock(
+                id="summary",
+                title="Résumé",
+                content="Le texte d'ensemble est adopté.",
+                primary=True,
+            )
+        ],
+    )
+
+    result = _run_async(
+        DailySummarizer().generate_summary([item], "2026-11-03", 10, language="fr")
+    )
+
+    assert "# Revue du matin - 2026-11-03" in result
+    assert "L'Assemblée adopte le budget" in result
+    assert "Le texte d'ensemble est adopté." in result
+    assert "&#x27;" not in result
+    assert "25 avr., 08:00 UTC" in result

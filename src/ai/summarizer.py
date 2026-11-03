@@ -20,6 +20,8 @@ _URL_SAFE_CHARS = ":/?#[]@!$&'*,;=~%+"
 def _escape_markdown(value: object) -> str:
     """Render untrusted text literally while retaining its readable content."""
     escaped = html.escape(str(value), quote=True)
+    # "#" is escaped below and would break the &#x27; entity into literal text.
+    escaped = escaped.replace("&#x27;", "'")
     escaped = _MARKDOWN_SPECIAL.sub(r"\\\1", escaped)
     return _MARKDOWN_BLOCK_START.sub(r"\1\\\2", escaped)
 
@@ -47,6 +49,11 @@ def _pangu(text: str) -> str:
     return text
 
 
+_FR_MONTHS = (
+    "janv.", "févr.", "mars", "avr.", "mai", "juin",
+    "juil.", "août", "sept.", "oct.", "nov.", "déc.",
+)
+
 LABELS = {
     "en": {
         "header": "Horizon Daily",
@@ -66,6 +73,26 @@ LABELS = {
             "1. Lowering the configured profile threshold\n"
             "2. Adding more diverse information sources\n"
             "3. Checking if the AI model is working correctly\n"
+        ),
+    },
+    "fr": {
+        "header": "Revue du matin",
+        "source": "Source",
+        "background": "Contexte",
+        "discussion": "Discussion",
+        "references": "Références",
+        "tags": "Mots-clés",
+        "selected_items": "Sur {total} articles analysés, {selected} retenu(s).",
+        "empty_analyzed": "{total} articles analysés, mais aucun n'a atteint le seuil d'importance.",
+        "empty_body": (
+            "Aucun événement marquant aujourd'hui. Causes possibles :\n"
+            "- une journée calme dans les sources suivies\n"
+            "- un seuil de score trop élevé\n"
+            "- des sources à élargir\n\n"
+            "Pistes :\n"
+            "1. Baisser le seuil du profil concerné\n"
+            "2. Ajouter des sources plus variées\n"
+            "3. Vérifier que le modèle IA répond correctement\n"
         ),
     },
     "zh": {
@@ -404,6 +431,11 @@ class DailySummarizer:
                 source_parts.append(
                     f"{item.published_at.month}月{item.published_at.day}日 "
                     f"{item.published_at:%H:%M}"
+                )
+            elif language == "fr":
+                source_parts.append(
+                    f"{item.published_at.day} {_FR_MONTHS[item.published_at.month - 1]}, "
+                    f"{item.published_at:%H:%M} UTC"
                 )
             else:
                 day = item.published_at.strftime("%d").lstrip("0")
