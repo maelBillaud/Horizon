@@ -1,0 +1,18 @@
+theme: jekyll-theme-cayman
+title: Revue du matin
+description: Sélection quotidienne de l'actualité politique, du sport, de l'IA et des technologies
+lang: fr
+baseurl: "/Horizon"
+url: "https://maelbillaud.github.io"
+
+markdown: kramdown
+future: true
+plugins:
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"

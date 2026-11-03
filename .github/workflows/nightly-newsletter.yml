@@ -23,14 +23,19 @@ jobs:
         run: uv sync
       - name: Générer la newsletter (dernières 24 h)
         env:
-          HORIZON_AI_KEY: ${{ secrets.HORIZON_AI_KEY }}
-          HORIZON_AI_MODEL: ${{ vars.HORIZON_AI_MODEL }}
-          HORIZON_AI_BASE_URL: ${{ vars.HORIZON_AI_BASE_URL }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: uv run horizon --config data/config.newsletter.json --hours 24
-      - name: Publier docs/ et data/summaries
+      - name: Préparer le site
         run: |
-          git config user.name "newsletter-bot"
-          git config user.email "newsletter-bot@users.noreply.github.com"
-          git add docs data/summaries
-          git diff --cached --quiet || git commit -m "Newsletter $(date -u +%F)"
-          git push
+          mkdir -p newsletter-site/_posts
+          cp docs/_posts/*-summary-fr.md newsletter-site/_posts/
+          sed -i 's/^title: "Horizon Summary: \(.*\) (FR)"/title: "Revue du matin - \1"/' newsletter-site/_posts/*-summary-fr.md
+      - name: Publier sur gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./newsletter-site
+          publish_branch: gh-pages
+          keep_files: true
+          enable_jekyll: true
+          commit_message: "Newsletter ${{ github.run_id }}"
