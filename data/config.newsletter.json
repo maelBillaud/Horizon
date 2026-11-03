@@ -1,9 +1,8 @@
 {
   "ai": {
-    "provider": "openai",
-    "model": "${HORIZON_AI_MODEL}",
-    "api_key_env": "HORIZON_AI_KEY",
-    "base_url": "${HORIZON_AI_BASE_URL}",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "api_key_env": "GOOGLE_API_KEY",
     "languages": ["fr"],
     "throttle_sec": 4.5,
     "analysis_concurrency": 1,
@@ -11,12 +10,30 @@
   },
   "sources": {
     "rss": [
+      {"name": "Mediapart - Journal", "url": "https://www.mediapart.fr/articles/feed", "enabled": true, "category": "politique-gauche", "profile": "politique-fr"},
+      {"name": "L'Humanité - Politique", "url": "https://www.humanite.fr/sections/politique/feed", "enabled": true, "category": "politique-gauche", "profile": "politique-fr"},
       {"name": "franceinfo - Politique", "url": "https://www.franceinfo.fr/politique.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
       {"name": "franceinfo - France", "url": "https://www.franceinfo.fr/france.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
       {"name": "franceinfo - Monde", "url": "https://www.franceinfo.fr/monde.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
       {"name": "franceinfo - Justice", "url": "https://www.francetvinfo.fr/societe/justice.rss", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "Le Monde - Politique", "url": "https://www.lemonde.fr/politique/rss_full.xml", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "Ouest-France - À la une", "url": "https://www.ouest-france.fr/rss/une", "enabled": true, "category": "politique-centre", "profile": "politique-fr"},
+      {"name": "L'Opinion - Politique", "url": "https://www.lopinion.fr/politique.rss", "enabled": true, "category": "politique-droite", "profile": "politique-fr"},
+      {"name": "Valeurs actuelles - Politique", "url": "https://www.valeursactuelles.com/feed?rubrique=politique", "enabled": true, "category": "politique-droite", "profile": "politique-fr"},
+      {"name": "franceinfo - Sports", "url": "https://www.franceinfo.fr/sports.rss", "enabled": true, "category": "sport", "profile": "sport"},
+      {"name": "L'Équipe - Actualités", "url": "https://dwh.lequipe.fr/api/edito/rss?path=/", "enabled": true, "category": "sport", "profile": "sport"},
+      {"name": "Ouest-France - Sport (127 articles/jour, désactivé)", "url": "https://www.ouest-france.fr/rss/sport", "enabled": false, "category": "sport", "profile": "sport"},
+      {"name": "Le Monde Informatique - IA", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/intelligence-artificielle/rss.xml", "enabled": true, "category": "ia", "profile": "ia"},
+      {"name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed", "enabled": true, "category": "ia", "profile": "ia"},
+      {"name": "Hugging Face - Blog", "url": "https://huggingface.co/blog/feed.xml", "enabled": true, "category": "ia", "profile": "ia"},
+      {"name": "Mistral AI - Actualités", "url": "https://mistral.ai/news/rss", "enabled": true, "category": "ia", "profile": "ia"},
+      {"name": "Google DeepMind - Blog", "url": "https://deepmind.google/blog/rss.xml", "enabled": true, "category": "ia", "profile": "ia"},
+      {"name": "OpenAI - Actualités", "url": "https://openai.com/news/rss.xml", "enabled": true, "category": "ia", "profile": "ia"},
       {"name": "franceinfo - Tech / Web", "url": "https://www.franceinfo.fr/internet.rss", "enabled": true, "category": "tech", "profile": "tech"},
-      {"name": "Le Monde Informatique - Sécurité", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml", "enabled": true, "category": "tech", "profile": "tech"}
+      {"name": "Le Monde Informatique - Sécurité", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Numerama", "url": "https://www.numerama.com/feed/", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Clubic", "url": "https://www.clubic.com/feed/rss", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Les Numériques", "url": "https://www.lesnumeriques.com/rss.xml", "enabled": true, "category": "tech", "profile": "tech"}
     ]
   },
   "collection": {"time_window_hours": 24},
