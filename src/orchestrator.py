@@ -448,7 +448,9 @@ class HorizonOrchestrator:
             List[ContentItem]: All fetched items
         """
         self.last_fetch_report = None
-        async with httpx.AsyncClient(timeout=30.0) as client:
+        # Some sites (e.g. CloudFront) answer 403 to the default python-httpx User-Agent.
+        headers = {"User-Agent": "Mozilla/5.0 (compatible; HorizonNewsletter/1.0; lecteur RSS personnel)"}
+        async with httpx.AsyncClient(timeout=30.0, headers=headers) as client:
             tasks = []
 
             # GitHub sources
