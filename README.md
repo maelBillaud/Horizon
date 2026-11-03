@@ -13,7 +13,7 @@ Ce dossier se copie à la racine de ton fork public de `Thysrael/Horizon`.
 1. Forker `Thysrael/Horizon` depuis ton GitHub (dépôt public, lien conservé avec l'officiel), puis copier ce dossier dedans. Aucun fichier d'origine n'est écrasé : la config et les profils ont des noms propres.
 2. Le workflow `daily-summary.yml` d'origine est livré désactivé (`.disabled`), tout comme `deploy-docs.yml` d'origine, qui publierait la doc du projet sur `gh-pages`.
 3. Créer une clé sur https://aistudio.google.com/api-keys, puis dans Settings > Secrets and variables > Actions : secret `GOOGLE_API_KEY`. Le modèle est fixé dans `data/config.newsletter.json` (`ai.model`). Ses quotas gratuits s'affichent dans https://aistudio.google.com/rate-limit.
-4. Settings > Actions : autoriser les workflows sur le fork. Après la première publication (la branche `gh-pages` est créée par le workflow), Settings > Pages : source « Deploy from a branch », branche `gh-pages`, dossier `/ (root)`.
+4. Settings > Actions > General : autoriser les workflows avec l'option « Allow actions created by GitHub » (le workflow n'utilise que `actions/checkout` et `actions/setup-python`). Après la première publication (la branche `gh-pages` est créée par le workflow), Settings > Pages : source « Deploy from a branch », branche `gh-pages`, dossier `/ (root)`.
 5. En local (ou Codespaces) : trouver et valider les flux restants.
    ```
    python tools/discover_feeds.py --apply

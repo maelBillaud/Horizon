@@ -18,9 +18,13 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Installer Horizon
-        run: uv sync
+        run: |
+          python -m pip install uv==0.11.26
+          uv sync
       - name: Générer la newsletter (dernières 24 h)
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
@@ -31,11 +35,18 @@ jobs:
           cp docs/_posts/*-summary-fr.md newsletter-site/_posts/
           sed -i 's/^title: "Horizon Summary: \(.*\) (FR)"/title: "Revue du matin - \1"/' newsletter-site/_posts/*-summary-fr.md
       - name: Publier sur gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./newsletter-site
-          publish_branch: gh-pages
-          keep_files: true
-          enable_jekyll: true
-          commit_message: "Newsletter ${{ github.run_id }}"
+        run: |
+          git config user.name "newsletter-bot"
+          git config user.email "newsletter-bot@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
+            git fetch --depth=1 origin gh-pages
+            git worktree add -B gh-pages pages FETCH_HEAD
+          else
+            git worktree add --detach pages
+            git -C pages checkout --orphan gh-pages
+            git -C pages rm -rf --quiet .
+          fi
+          cp -r newsletter-site/. pages/
+          git -C pages add -A
+          git -C pages diff --cached --quiet || git -C pages commit -m "Newsletter $(date -u +%F)"
+          git -C pages push origin gh-pages
