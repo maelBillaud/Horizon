@@ -33,7 +33,15 @@
       {"name": "Le Monde Informatique - Sécurité", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml", "enabled": true, "category": "tech", "profile": "tech"},
       {"name": "Numerama", "url": "https://www.numerama.com/feed/", "enabled": true, "category": "tech", "profile": "tech"},
       {"name": "Clubic", "url": "https://www.clubic.com/feed/rss", "enabled": true, "category": "tech", "profile": "tech"},
-      {"name": "Les Numériques", "url": "https://www.lesnumeriques.com/rss.xml", "enabled": true, "category": "tech", "profile": "tech"}
+      {"name": "Les Numériques", "url": "https://www.lesnumeriques.com/rss.xml", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Home Assistant - Blog", "url": "https://www.home-assistant.io/atom.xml", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Zigbee2MQTT - Versions", "url": "https://github.com/Koenkk/zigbee2mqtt/releases.atom", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Frandroid - Maison connectée", "url": "https://www.frandroid.com/maison-connectee/feed", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "selfh.st", "url": "https://selfh.st/rss/", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Korben", "url": "https://korben.info/feed", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "LinuxFr.org - Dépêches", "url": "https://linuxfr.org/news.atom", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "LWN.net - Titres", "url": "https://lwn.net/headlines/rss", "enabled": true, "category": "tech", "profile": "tech"},
+      {"name": "Next", "url": "https://next.ink/feed/", "enabled": true, "category": "tech", "profile": "tech"}
     ]
   },
   "collection": {"time_window_hours": 24},
