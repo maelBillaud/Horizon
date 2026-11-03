@@ -9,6 +9,9 @@
     "enrichment_concurrency": 1
   },
   "sources": {
+    "hackernews": {"enabled": false},
+    "reddit": {"enabled": false},
+    "telegram": {"enabled": false},
     "rss": [
       {"name": "Mediapart - Journal", "url": "https://www.mediapart.fr/articles/feed", "enabled": true, "category": "politique-gauche", "profile": "politique-fr"},
       {"name": "L'Humanité - Politique", "url": "https://www.humanite.fr/sections/politique/feed", "enabled": true, "category": "politique-gauche", "profile": "politique-fr"},
